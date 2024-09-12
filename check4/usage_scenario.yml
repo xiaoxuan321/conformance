@@ -1,0 +1,63 @@
+---
+name: conformance-check
+author: Raines
+version: 1
+description: test conformance checking algorithms
+
+services:
+  BPIC13_cp_container:
+    build:
+      context: .
+  BPIC13_i_container:
+    build:
+      context: .
+  BPIC15_1f_container:
+    build:
+      context: .
+  BPIC15_2f_container:
+    build:
+      context: .
+  BPIC15_4f_container:
+    build:
+      context: .
+  BPIC15_5f_container:
+    build:
+      context: .
+
+flow:
+  - name: BPIC13_cp
+    container: BPIC13_cp_container
+    commands:
+      - type: console
+        command: python /app/test_conformance.py BPIC13_cp
+        note: Running BPIC13_cp_container
+  - name: Test BPIC13_i
+    container: BPIC13_i_container
+    commands:
+      - type: console
+        command: python /app/test_conformance.py BPIC13_i
+        note: Running BPIC13_i_container
+  - name: Test BPIC15_1f
+    container: BPIC15_1f_container
+    commands:
+      - type: console
+        command: python /app/test_conformance.py BPIC15_1f
+        note: Running BPIC15_1f_container
+  - name: Test BPIC15_2f
+    container: BPIC15_2f_container
+    commands:
+      - type: console
+        command: python /app/test_conformance.py BPIC15_2f
+        note: Running BPIC15_2f_container
+  - name: Test BPIC15_4f
+    container: BPIC15_4f_container
+    commands:
+      - type: console
+        command: python /app/test_conformance.py BPIC15_4f
+        note: Running BPIC15_4f_container
+  - name: Test BPIC15_5f
+    container: BPIC15_5f_container
+    commands:
+      - type: console
+        command: python /app/test_conformance.py BPIC15_5f
+        note: Running BPIC15_5f_container
